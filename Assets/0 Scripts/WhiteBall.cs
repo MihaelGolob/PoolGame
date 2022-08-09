@@ -5,7 +5,7 @@ using UnityEngine;
 public class WhiteBall : Ball {
 
     protected override void Start() {
-        
+
     }
     
     protected override void Update() {
