@@ -5,24 +5,26 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class AimLine : MonoBehaviour {
     // inspector assigned
-    [SerializeField] private Transform _whiteBall;
+    [SerializeField] private Transform _whiteBallTransform;
     [SerializeField] private Cue _cue;
     [SerializeField] private float _bouncedLineLenghth = 0.2f;
 
     // private variables
     private LineRenderer _lineRenderer;
+    private WhiteBall _whiteBall;
     
     private void Start() {
         _lineRenderer = GetComponent<LineRenderer>();
+        _whiteBall = _whiteBallTransform.gameObject.GetComponent<WhiteBall>();
     }
     
     private void Update() {
         var verticalOffset = Vector3.up * 0.05f;
         
         // draw line from cue to white ball
-        _lineRenderer.SetPosition(0, _whiteBall.position + verticalOffset);
-        // raycast in direction of cue
-        if (Physics.Raycast(_whiteBall.position, _cue.AimDirection, out var hit)) {
+        _lineRenderer.SetPosition(0, _whiteBallTransform.position + verticalOffset);
+        // spherecast in direction of cue
+        if (Physics.SphereCast(_cue.transform.position, _whiteBall.Radius, _cue.AimDirection, out var hit, 10f)) {
             _lineRenderer.SetPosition(1, hit.point + verticalOffset);
             
             // check hit layer

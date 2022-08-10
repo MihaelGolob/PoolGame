@@ -17,12 +17,16 @@ public class Ball : MonoBehaviour {
     // private variables
     private event Action<Ball> OnBallPocketed;
 
+    private SphereCollider _collider;
+
     // public properties
     public BallType BallType => _ballType;
     public Rigidbody Rigidbody { get; private set; }
+    public float Radius => _collider.radius;
 
-    protected virtual void Awake() {
+    protected void Awake() {
         Rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<SphereCollider>();
     }
 
     protected virtual void Start() {

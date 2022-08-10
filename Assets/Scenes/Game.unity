@@ -1345,12 +1345,12 @@ Rigidbody:
   m_GameObject: {fileID: 691364999}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &691365001
 SphereCollider:
@@ -1394,12 +1394,12 @@ Rigidbody:
   m_GameObject: {fileID: 774247942}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &774247944
 SphereCollider:
@@ -1916,12 +1916,12 @@ Rigidbody:
   m_GameObject: {fileID: 1081088769}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1081088771
 SphereCollider:
@@ -2450,12 +2450,12 @@ Rigidbody:
   m_GameObject: {fileID: 1365033413}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1365033415
 SphereCollider:
@@ -2612,12 +2612,12 @@ Rigidbody:
   m_GameObject: {fileID: 160453759}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1408916111
 SphereCollider:
@@ -3223,12 +3223,12 @@ Rigidbody:
   m_GameObject: {fileID: 1455165850}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1455165852
 SphereCollider:
@@ -3349,12 +3349,12 @@ Rigidbody:
   m_GameObject: {fileID: 330405213}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1494508939
 SphereCollider:
@@ -3398,12 +3398,12 @@ Rigidbody:
   m_GameObject: {fileID: 1575432376}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1575432378
 SphereCollider:
@@ -3580,12 +3580,12 @@ Rigidbody:
   m_GameObject: {fileID: 1609856735}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1609856737
 SphereCollider:
@@ -3821,12 +3821,12 @@ Rigidbody:
   m_GameObject: {fileID: 309362386}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1674374851
 SphereCollider:
@@ -3960,12 +3960,12 @@ Rigidbody:
   m_GameObject: {fileID: 1707593679}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1707593681
 SphereCollider:
@@ -4046,12 +4046,12 @@ Rigidbody:
   m_GameObject: {fileID: 1859035341}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1859035343
 SphereCollider:
@@ -4146,12 +4146,12 @@ Rigidbody:
   m_GameObject: {fileID: 1987506772}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &1987506774
 SphereCollider:
@@ -4282,12 +4282,12 @@ Rigidbody:
   m_GameObject: {fileID: 2068804439}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &2068804441
 SphereCollider:
@@ -4414,12 +4414,12 @@ Rigidbody:
   m_GameObject: {fileID: 2115289096}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &2115289098
 SphereCollider:
@@ -4540,12 +4540,12 @@ Rigidbody:
   m_GameObject: {fileID: 1870898628}
   serializedVersion: 2
   m_Mass: 2
-  m_Drag: 0.3
-  m_AngularDrag: 0.5
+  m_Drag: 0.5
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!135 &2135803105
 SphereCollider:
