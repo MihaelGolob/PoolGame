@@ -8,6 +8,7 @@ public class AimLine : MonoBehaviour {
     [SerializeField] private Transform _whiteBallTransform;
     [SerializeField] private Cue _cue;
     [SerializeField] private float _bouncedLineLenghth = 0.2f;
+    [SerializeField] private float _whiteBouncedLineLenghth = 0.1f;
 
     // private variables
     private LineRenderer _lineRenderer;
@@ -31,6 +32,7 @@ public class AimLine : MonoBehaviour {
             if (hit.collider.CompareTag("Ball")) {
                 // draw ball direction
                 var normal = hit.normal;
+                
                 _lineRenderer.SetPosition(2, hit.point - normal * _bouncedLineLenghth + verticalOffset);
             }
             else {

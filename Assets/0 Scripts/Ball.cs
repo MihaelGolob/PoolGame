@@ -46,9 +46,14 @@ public class Ball : MonoBehaviour {
     protected void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("Pocket")) return;
         
-        // disable renderer
-        GetComponent<Renderer>().enabled = false;
-        
+        // disable renderer with delay
+        StartCoroutine(DisableRenderer());
+        Rigidbody.constraints = RigidbodyConstraints.None;
         OnBallPocketed?.Invoke(this);
+    }
+    
+    private IEnumerator DisableRenderer() {
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<Renderer>().enabled = false;
     }
 }
