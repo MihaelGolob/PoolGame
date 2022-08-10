@@ -21,7 +21,11 @@ public class Cue : MonoBehaviour {
     private Vector3 _startPosition;
     private bool _lockRotation = false;
     
-    private Vector3 _direction = Vector3.forward;
+    private Vector3 _aimDirection = Vector3.forward;
+    
+    // public fields
+    public Vector3 AimDirection => _aimDirection;
+    public bool IsCueDisabled { get; set; }
     
     private void Start() {
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -33,7 +37,8 @@ public class Cue : MonoBehaviour {
     
     private void Update() {
         // keep the cue at the white ball
-        transform.position = _whiteBall.transform.position;
+        var whitePos = _whiteBall.transform.position;
+        transform.position = new Vector3(whitePos.x, transform.position.y, whitePos.z);
         // rotate cue
         RotateToMouse();
         // set power
@@ -42,6 +47,7 @@ public class Cue : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        // TODO: this should be the work of the TurnManager
         // check if white ball is still
         if (_whiteBall.Rigidbody.velocity.magnitude < 0.01f) {
             _whiteBall.Rigidbody.velocity = Vector3.zero;
@@ -59,25 +65,27 @@ public class Cue : MonoBehaviour {
         mouseWorldPos.y = 1;
 
         // get direction from white ball to mouse
-        _direction = (mouseWorldPos - _whiteBall.transform.position).normalized;
+        _aimDirection = (mouseWorldPos - _whiteBall.transform.position).normalized;
         // rotate towards mouse
-        var angle = Vector3.SignedAngle(transform.forward, _direction, Vector3.down);
+        var angle = Vector3.SignedAngle(transform.forward, _aimDirection, Vector3.down);
         var rot = new Vector3(0, -angle, 0);
         transform.Rotate(Time.deltaTime * _rotationSpeed * rot, Space.Self);
     }
 
     private void ApplyForceToWhiteBall() {
         // apply force to white ball
-        _whiteBall.Rigidbody.AddForce(_direction * (1 - _powerSlider.value) * _maxForce, ForceMode.Impulse);
+        _whiteBall.Rigidbody.AddForce(_aimDirection * (1 - _powerSlider.value) * _maxForce, ForceMode.Impulse);
         // disable cue
         DisableCue();
     }
 
     private void EnableCue() {
+        IsCueDisabled = false;
         _meshRenderer.enabled = true;
     }
 
     private void DisableCue() {
+        IsCueDisabled = true;
         _meshRenderer.enabled = false;
     }
     
