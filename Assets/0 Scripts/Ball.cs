@@ -14,36 +14,35 @@ public class Ball : MonoBehaviour {
     // inspector assigned
     [SerializeField] protected BallType _ballType;
     [SerializeField] protected float _gravityMultiplier = 3f;
- 
-    // private variables
-    private SphereCollider _collider;
+    [SerializeField] protected float _stopBallTreeshold = 0.01f;
+    
+    // protected variables
+    protected SphereCollider _collider;
+    protected Rigidbody _rigidbody;
 
     // events
     public static event Action<Ball> OnBallPocketed;
     
     // public properties
     public BallType BallType => _ballType;
-    public Rigidbody Rigidbody { get; private set; }
     public float Radius => _collider.radius;
 
+    public bool IsStill => _rigidbody.velocity.magnitude <= _stopBallTreeshold;
+
     protected void Awake() {
-        Rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<SphereCollider>();
     }
 
     protected virtual void Start() {
         // apply extra gravity so the balls dont exit the table
-        Rigidbody.AddForce(Vector3.down * _gravityMultiplier, ForceMode.Acceleration);
-    }
-
-    protected virtual void Update() {
-        
+        _rigidbody.AddForce(Vector3.down * _gravityMultiplier, ForceMode.Acceleration);
     }
 
     protected void FixedUpdate() {
         // stop ball if very slow
-        if (Rigidbody.velocity.magnitude < 0.001f)
-            Rigidbody.velocity = Vector3.zero;
+        if (_rigidbody.velocity.magnitude < _stopBallTreeshold)
+            _rigidbody.velocity = Vector3.zero;
     }
 
     protected void OnTriggerEnter(Collider other) {
@@ -51,7 +50,7 @@ public class Ball : MonoBehaviour {
         
         // disable renderer with delay
         StartCoroutine(DisableRenderer());
-        Rigidbody.constraints = RigidbodyConstraints.None;
+        _rigidbody.constraints = RigidbodyConstraints.None;
         // invoke the event
         OnBallPocketed?.Invoke(this);
     }

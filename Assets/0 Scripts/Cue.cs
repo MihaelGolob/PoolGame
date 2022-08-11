@@ -26,6 +26,7 @@ public class Cue : MonoBehaviour {
     // public fields
     public Vector3 AimDirection => _aimDirection;
     public bool IsCueDisabled { get; set; }
+    public bool HasShot { get; set; }
     
     private void Start() {
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -46,19 +47,9 @@ public class Cue : MonoBehaviour {
         _meshTransform.localPosition = new Vector3(pos.x, pos.y, _startPosition.z - (_maxDistance - _maxDistance * _powerSlider.value));
     }
 
-    private void FixedUpdate() {
-        // TODO: this should be the work of the TurnManager
-        // check if white ball is still
-        if (_whiteBall.Rigidbody.velocity.magnitude < 0.01f) {
-            _whiteBall.Rigidbody.velocity = Vector3.zero;
-            EnableCue();
-        }
-        else DisableCue();
-    }
-
     private void RotateToMouse() {
         // rotate only when button is down
-        if (!Input.GetKey(KeyCode.Mouse0) || _lockRotation) return;
+        if (!Input.GetKey(KeyCode.Mouse0) || _lockRotation || IsCueDisabled) return;
         
         var mousePos = Input.mousePosition;
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -72,31 +63,34 @@ public class Cue : MonoBehaviour {
         transform.Rotate(Time.deltaTime * _rotationSpeed * rot, Space.Self);
     }
 
-    private void ApplyForceToWhiteBall() {
-        // apply force to white ball
-        _whiteBall.Rigidbody.AddForce(_aimDirection * (1 - _powerSlider.value) * _maxForce, ForceMode.Impulse);
-        // disable cue
-        DisableCue();
-    }
+    private void ApplyForceToWhiteBall() => _whiteBall.ApplyForce(_aimDirection * (1 - _powerSlider.value) * _maxForce);
 
-    private void EnableCue() {
+    // public methods
+    public void EnableCue() {
         IsCueDisabled = false;
-        _meshRenderer.enabled = true;
+        _lockRotation = false;
+        HasShot = false;
+        if (_meshRenderer) _meshRenderer.enabled = true;
     }
 
-    private void DisableCue() {
+    public void DisableCue() {
         IsCueDisabled = true;
-        _meshRenderer.enabled = false;
+        _lockRotation = true;
+        if (_meshRenderer) _meshRenderer.enabled = false;
     }
     
-    // public methods
     public void LockRotation() {
         _lockRotation = true;
     }
     
     public void UnlockRotation() {
+        if (IsCueDisabled) return;
+        
         _lockRotation = false;
-        if (_powerSlider.value < 1)
+        if (_powerSlider.value < 1) {
             ApplyForceToWhiteBall();
+            HasShot = true;
+            DisableCue();
+        }
     }
 }

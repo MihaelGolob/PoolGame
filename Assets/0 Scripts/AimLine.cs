@@ -6,10 +6,10 @@ using UnityEngine;
 public class AimLine : MonoBehaviour {
     // inspector assigned
     [SerializeField] private Transform _whiteBallTransform;
-    [SerializeField] private Cue _cue;
     [SerializeField] private float _bouncedLineLenghth = 0.2f;
 
     // private variables
+    private Cue _cue;
     private LineRenderer _lineRenderer;
     private WhiteBall _whiteBall;
     
@@ -20,7 +20,14 @@ public class AimLine : MonoBehaviour {
     
     private void Update() {
         var verticalOffset = Vector3.up * 0.05f;
+        _cue = TurnManager.Instance.GetActiveCue();
         
+        if (_cue == null || _cue.IsCueDisabled) {
+            _lineRenderer.enabled = false;
+            return;
+        }
+        _lineRenderer.enabled = true;
+
         // draw line from cue to white ball
         _lineRenderer.SetPosition(0, _whiteBallTransform.position + verticalOffset);
         // spherecast in direction of cue
@@ -38,8 +45,5 @@ public class AimLine : MonoBehaviour {
                 _lineRenderer.SetPosition(2, hit.point + verticalOffset);
             }
         }
-        
-        // hide line, when cue is hidden
-        _lineRenderer.enabled = !_cue.IsCueDisabled;
     }
 }
