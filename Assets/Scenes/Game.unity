@@ -135,6 +135,10 @@ PrefabInstance:
       value: white
       objectReference: {fileID: 0}
     - target: {fileID: 118688, guid: 17e064aa45dc761439991e33e1445a32, type: 3}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 118688, guid: 17e064aa45dc761439991e33e1445a32, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -3219,7 +3223,6 @@ MonoBehaviour:
   _whiteBallTransform: {fileID: 7157321}
   _cue: {fileID: 2043223640}
   _bouncedLineLenghth: 0.2
-  _whiteBouncedLineLenghth: 0.1
 --- !u!120 &1427838225
 LineRenderer:
   m_ObjectHideFlags: 0

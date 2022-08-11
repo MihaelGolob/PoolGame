@@ -8,7 +8,6 @@ public class AimLine : MonoBehaviour {
     [SerializeField] private Transform _whiteBallTransform;
     [SerializeField] private Cue _cue;
     [SerializeField] private float _bouncedLineLenghth = 0.2f;
-    [SerializeField] private float _whiteBouncedLineLenghth = 0.1f;
 
     // private variables
     private LineRenderer _lineRenderer;

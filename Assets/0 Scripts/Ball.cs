@@ -6,7 +6,8 @@ public enum BallType {
     Solids,
     Stripes,
     Black,
-    White
+    White,
+    None
 }
 
 public class Ball : MonoBehaviour {
@@ -15,10 +16,11 @@ public class Ball : MonoBehaviour {
     [SerializeField] protected float _gravityMultiplier = 3f;
  
     // private variables
-    private event Action<Ball> OnBallPocketed;
-
     private SphereCollider _collider;
 
+    // events
+    public static event Action<Ball> OnBallPocketed;
+    
     // public properties
     public BallType BallType => _ballType;
     public Rigidbody Rigidbody { get; private set; }
@@ -39,7 +41,8 @@ public class Ball : MonoBehaviour {
     }
 
     protected void FixedUpdate() {
-        if (Rigidbody.velocity.magnitude < 0.01f)
+        // stop ball if very slow
+        if (Rigidbody.velocity.magnitude < 0.001f)
             Rigidbody.velocity = Vector3.zero;
     }
 
@@ -49,6 +52,7 @@ public class Ball : MonoBehaviour {
         // disable renderer with delay
         StartCoroutine(DisableRenderer());
         Rigidbody.constraints = RigidbodyConstraints.None;
+        // invoke the event
         OnBallPocketed?.Invoke(this);
     }
     
