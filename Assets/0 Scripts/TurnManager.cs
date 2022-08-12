@@ -37,7 +37,7 @@ public class TurnManager : MonoBehaviour {
     public event Action OnGameOver;
     
     // public properties
-    public Cue GetActiveCue => _onTurn.Cue;
+    public Unit GetActiveUnit => _onTurn;
     public Unit Player1 => _player;
     public Unit Player2 => _enemy;
 
