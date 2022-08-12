@@ -38,6 +38,8 @@ public class TurnManager : MonoBehaviour {
     
     // public properties
     public Cue GetActiveCue => _onTurn.Cue;
+    public Unit Player1 => _player;
+    public Unit Player2 => _enemy;
 
     // private variables
     private GameState _gameState = GameState.Start;

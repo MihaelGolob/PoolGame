@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -83,12 +84,17 @@ public class Cue : MonoBehaviour {
     
     public void UnlockRotation() {
         if (IsCueDisabled) return;
-        
         _lockRotation = false;
-        if (_powerSlider.value < 1) {
-            ApplyForceToWhiteBall();
-            OnShot.Invoke();
-            DisableCue();
-        }
+
+        if (_powerSlider.value >= 1) return;
+        StartCoroutine(UnlockRotationInternal());
+    }
+
+    private IEnumerator UnlockRotationInternal() {
+        ApplyForceToWhiteBall();
+        DisableCue();
+        // delay for the ball to gain velocity
+        yield return new WaitForSeconds(0.1f);
+        OnShot.Invoke();
     }
 }
