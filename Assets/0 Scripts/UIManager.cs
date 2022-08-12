@@ -23,12 +23,14 @@ public class UIManager : MonoBehaviour {
     private void OnEnable() {
         TurnManager.Instance.OnChangeTurn += HandleOnChangeTurn;
         TurnManager.Instance.OnBallTypesSet += HandleOnBallTypesSet;
+        TurnManager.Instance.OnGameOver += HandleOnGameOver;
     }
     
     // unsubscribe from events
     private void OnDisable() {
         TurnManager.Instance.OnChangeTurn -= HandleOnChangeTurn;
         TurnManager.Instance.OnBallTypesSet -= HandleOnBallTypesSet;
+        TurnManager.Instance.OnGameOver -= HandleOnGameOver;
     }
 
     private void Start() {
@@ -65,7 +67,11 @@ public class UIManager : MonoBehaviour {
     }
     
     private void HandleOnBallTypesSet() {
-        var type = TurnManager.Instance.GetActiveUnit.BallType == BallType.Solids ? "solids" : "stripes";
+        var type = TurnManager.Instance.ActiveUnit.BallType == BallType.Solids ? "solids" : "stripes";
         StartCoroutine(Notification($"You are {type}!", 5f));
+    }
+
+    private void HandleOnGameOver(Unit unit) { 
+        StartCoroutine(Notification($"{unit.Name} wins!", 5f));
     }
 }

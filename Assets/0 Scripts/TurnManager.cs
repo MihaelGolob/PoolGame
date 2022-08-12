@@ -1,7 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
 
 public enum GameState {
@@ -34,10 +34,10 @@ public class TurnManager : MonoBehaviour {
     // events
     public event Action<Unit> OnChangeTurn;
     public event Action OnBallTypesSet;
-    public event Action OnGameOver;
-    
+    public event Action<Unit> OnGameOver;
+
     // public properties
-    public Unit GetActiveUnit => _onTurn;
+    public Unit ActiveUnit => _onTurn;
     public Unit Player1 => _player;
     public Unit Player2 => _enemy;
 
@@ -88,10 +88,8 @@ public class TurnManager : MonoBehaviour {
         var blackPocketed = _ballsPocketedThisTurn.Any(ball => ball.BallType == BallType.Black);
         var allOthersPocketed = _ballsPocketed.Count(ball => ball.BallType == _onTurn.BallType) == 7;
         if (blackPocketed) {
-            OnGameOver?.Invoke();
-            
-            if (allOthersPocketed) Debug.Log($"Player {_onTurn.Name} wins!");
-            else Debug.Log($"Player {_onTurn.Name} loses!");
+            if (allOthersPocketed) OnGameOver?.Invoke(_onTurn);
+            else OnGameOver?.Invoke(NotOnTurn());
         } 
         
         // check ball types are set
@@ -118,8 +116,7 @@ public class TurnManager : MonoBehaviour {
         var otherBallType = ballType == BallType.Solids ? BallType.Stripes : BallType.Solids;
         // set ball types
         _onTurn.BallType = ballType;
-        if (_onTurn == _player) _enemy.BallType = otherBallType;
-        else _player.BallType = otherBallType;
+        NotOnTurn().BallType = otherBallType;
 
         OnBallTypesSet?.Invoke();
     }
@@ -142,11 +139,27 @@ public class TurnManager : MonoBehaviour {
     private bool CheckBallsStill() => _balls.All(ball => ball.IsStill);
 
     private int BallsOfTypePocketed(BallType type) => _ballsPocketed.Count(ball => ball.BallType == type);
+    
+    private Unit NotOnTurn() => _onTurn == _player ? _enemy : _player;
 
+    private IEnumerator RespawnWhiteDelayed(Ball ball) {
+        _onTurn.Cue.DisableCue();
+        yield return new WaitForSeconds(4f);
+        var whiteBall = ball.gameObject.GetComponent<WhiteBall>();
+        // respawn white ball
+        whiteBall.Respawn();
+        _onTurn.Cue.EnableCue();
+    }
+    
     // ---------------------------------------------------------------------------------------------
     // EVENT HANDLERS
     private void HandleOnBallPocketed(Ball ball) {
         Debug.Log($"Ball pocketed: {ball.gameObject.name}");
+
+        if (ball.BallType == BallType.White) {
+            StartCoroutine(RespawnWhiteDelayed(ball));
+            return;
+        }
         
         _ballsPocketed.Add(ball);
         _ballsPocketedThisTurn.Add(ball);

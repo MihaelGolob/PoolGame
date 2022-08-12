@@ -15,10 +15,11 @@ public class Ball : MonoBehaviour {
     [SerializeField] protected BallType _ballType;
     [SerializeField] protected float _gravityMultiplier = 3f;
     [SerializeField] protected float _stopBallTreeshold = 0.01f;
-    
+
     // protected variables
     protected SphereCollider _collider;
     protected Rigidbody _rigidbody;
+    protected MeshRenderer _renderer;
     protected bool _pocketed = false;
 
     // events
@@ -33,6 +34,7 @@ public class Ball : MonoBehaviour {
     protected void Awake() {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<SphereCollider>();
+        _renderer = GetComponent<MeshRenderer>();
     }
 
     protected virtual void Start() {
@@ -46,7 +48,7 @@ public class Ball : MonoBehaviour {
             _rigidbody.velocity = Vector3.zero;
     }
 
-    protected void OnTriggerEnter(Collider other) {
+    protected virtual void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("Pocket")) return;
         
         // disable renderer with delay
@@ -61,6 +63,6 @@ public class Ball : MonoBehaviour {
     
     private IEnumerator DisableRenderer() {
         yield return new WaitForSeconds(0.5f);
-        GetComponent<Renderer>().enabled = false;
+        _renderer.enabled = false;
     }
 }
