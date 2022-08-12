@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +23,9 @@ public class Cue : MonoBehaviour {
     // public fields
     public Vector3 AimDirection => _aimDirection;
     public bool IsCueDisabled { get; set; }
-    public bool HasShot { get; set; }
+
+    // events
+    public static event Action OnShot;
     
     private void Start() {
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -69,7 +68,6 @@ public class Cue : MonoBehaviour {
     public void EnableCue() {
         IsCueDisabled = false;
         _lockRotation = false;
-        HasShot = false;
         if (_meshRenderer) _meshRenderer.enabled = true;
     }
 
@@ -89,7 +87,7 @@ public class Cue : MonoBehaviour {
         _lockRotation = false;
         if (_powerSlider.value < 1) {
             ApplyForceToWhiteBall();
-            HasShot = true;
+            OnShot.Invoke();
             DisableCue();
         }
     }

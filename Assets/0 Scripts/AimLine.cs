@@ -20,7 +20,7 @@ public class AimLine : MonoBehaviour {
     
     private void Update() {
         var verticalOffset = Vector3.up * 0.05f;
-        _cue = TurnManager.Instance.GetActiveCue();
+        _cue = TurnManager.Instance.GetActiveCue;
         
         if (_cue == null || _cue.IsCueDisabled) {
             _lineRenderer.enabled = false;

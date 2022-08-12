@@ -1554,7 +1554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 0
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1001 &775405095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2246,7 +2246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1001 &1107299622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2826,7 +2826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 0
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1001 &1408916108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 0
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!4 &1410376123
 Transform:
   m_ObjectHideFlags: 0
@@ -3610,7 +3610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1001 &1494508936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3737,7 +3737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1 &1573619018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3819,7 +3819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1 &1586105164
 GameObject:
   m_ObjectHideFlags: 0
@@ -4048,7 +4048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1 &1618009557
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,7 +4290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1 &1676594899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4475,7 +4475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 0
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1 &1752354146
 GameObject:
   m_ObjectHideFlags: 0
@@ -4562,7 +4562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 2
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1 &1870898628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 127214, guid: e4e8a579193bffb46934dae0210eaec8,
@@ -4751,7 +4751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 1
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!4 &2043223639 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4624057538854953164, guid: 4ba6ec5ab01ba4c6dbbd065b70aedef2,
@@ -4856,7 +4856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 0
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1001 &2079559449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 0
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!1001 &2135803102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5116,7 +5116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballType: 0
   _gravityMultiplier: 3
-  _stopBallTreeshold: 0.05
+  _stopBallTreeshold: 0.15
 --- !u!23 &23808192505583933
 MeshRenderer:
   m_ObjectHideFlags: 0

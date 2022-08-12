@@ -13,14 +13,13 @@ public class Unit : MonoBehaviour {
     
     // public properties
     public Cue Cue => _cue;
-    public bool HasShot => _cue.HasShot;
 
     private void OnEnable() {
         TurnManager.Instance.OnChangeTurn += HandleOnChangeTurn;
     }
     
     private void OnDisable() {
-        TurnManager.Instance.OnChangeTurn -= HandleOnChangeTurn;
+        if (TurnManager.Instance) TurnManager.Instance.OnChangeTurn -= HandleOnChangeTurn;
     }
     
     // event handlers

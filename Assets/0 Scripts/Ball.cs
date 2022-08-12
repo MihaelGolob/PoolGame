@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour {
 
     protected void FixedUpdate() {
         // stop ball if very slow
-        if (_rigidbody.velocity.magnitude < _stopBallTreeshold)
+        if (_rigidbody.velocity.magnitude < 0.01f)
             _rigidbody.velocity = Vector3.zero;
     }
 
