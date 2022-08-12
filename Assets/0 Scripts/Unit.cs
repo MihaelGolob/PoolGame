@@ -7,12 +7,11 @@ public class Unit : MonoBehaviour {
     // inspector assigned
     [SerializeField] private string _unitName;
     [SerializeField] private Cue _cue;
-    
-    // private variables
-    private bool _isPlaying;
-    
+
     // public properties
     public Cue Cue => _cue;
+    public BallType BallType { get; set; } = BallType.None;
+    public string Name => _unitName;
 
     private void OnEnable() {
         TurnManager.Instance.OnChangeTurn += HandleOnChangeTurn;
@@ -24,13 +23,7 @@ public class Unit : MonoBehaviour {
     
     // event handlers
     private void HandleOnChangeTurn(Unit unit) {
-        if (unit != this) {
-            _isPlaying = false;
-            _cue.DisableCue();
-        }
-        else {
-            _isPlaying = true;
-            _cue.EnableCue();
-        }
+        if (unit != this) _cue.DisableCue();
+        else _cue.EnableCue();
     }
 }

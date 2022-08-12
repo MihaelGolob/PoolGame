@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour {
     // protected variables
     protected SphereCollider _collider;
     protected Rigidbody _rigidbody;
+    protected bool _pocketed = false;
 
     // events
     public static event Action<Ball> OnBallPocketed;
@@ -27,7 +28,7 @@ public class Ball : MonoBehaviour {
     public BallType BallType => _ballType;
     public float Radius => _collider.radius;
 
-    public bool IsStill => _rigidbody.velocity.magnitude <= _stopBallTreeshold;
+    public bool IsStill => _pocketed || _rigidbody.velocity.magnitude <= _stopBallTreeshold;
 
     protected void Awake() {
         _rigidbody = GetComponent<Rigidbody>();
@@ -49,10 +50,13 @@ public class Ball : MonoBehaviour {
         if (!other.CompareTag("Pocket")) return;
         
         // disable renderer with delay
+        _pocketed = true;
         StartCoroutine(DisableRenderer());
         _rigidbody.constraints = RigidbodyConstraints.None;
         // invoke the event
         OnBallPocketed?.Invoke(this);
+        // prevent further event invocations
+        _collider.enabled = false;
     }
     
     private IEnumerator DisableRenderer() {
